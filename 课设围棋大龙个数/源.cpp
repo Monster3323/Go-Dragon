@@ -1,4 +1,4 @@
-#include<iostream>//©∞©§    ©–©§  ©¥   ©¿©§    ©‡©§    ©» ©∏©§   ©ÿ©§    ©º °Ò©§ °
+#include<iostream>//‚îå‚îÄ    ‚î¨‚îÄ  ‚îê   ‚îú‚îÄ    ‚îº‚îÄ    ‚î§ ‚îî‚îÄ   ‚î¥‚îÄ    ‚îò ‚óè‚îÄ ‚óã
 #include<stdlib.h>
 #include<time.h>
 using namespace std;
@@ -76,7 +76,7 @@ void Initpiece(piece checkerboard[19][19])
 			checkerboard[i][j].data = 10;
 		}
 	}
-	for(int i=0;i<19;i++)
+	for (i = 0; i < 19; i++)
 		for (int j = 0; j < 19; j++)
 		{
 			checkerboard[i][j].posx = i;
@@ -91,12 +91,23 @@ void Display(piece checkerboard[19][19])
 	{
 		for (j = 0; j < 19; j++)
 		{
+			if (checkerboard[i][j].data == 2) printf("‚îå‚îÄ");
+			if (checkerboard[i][j].data == 3) printf("‚îê");
+			if (checkerboard[i][j].data == 4) printf("‚îî‚îÄ");
+			if (checkerboard[i][j].data == 5) printf("‚îò");
+			if (checkerboard[i][j].data == 6) printf("‚î¨‚îÄ");
+			if (checkerboard[i][j].data == 7) printf("‚î¥‚îÄ");
+			if (checkerboard[i][j].data == 8) printf("‚îú‚îÄ");
+			if (checkerboard[i][j].data == 9) printf("‚î§");
+			if (checkerboard[i][j].data == 10) printf("‚îº‚îÄ");
+			if (checkerboard[i][j].data == 0) printf("‚óã");
+			if (checkerboard[i][j].data == 1) printf("‚óè");
 		}
 		printf("\n");
 	}
 }
 
-int JudgeDragon(piece checkerboard[][19],int sign,SqQueue s)
+int JudgeDragon(piece checkerboard[][19], int sign, SqQueue s)
 {
 	int m = 0;
 	piece q;
@@ -114,21 +125,21 @@ int JudgeDragon(piece checkerboard[][19],int sign,SqQueue s)
 					++num[sign][m];
 					if (q.posy > 0)
 					{
-						if (checkerboard[q.posx][q.posy-1].data == sign && v[q.posx][q.posy - 1] == 0)
+						if (checkerboard[q.posx][q.posy - 1].data == sign && v[q.posx][q.posy - 1] == 0)
 						{
 							EnQueue(s, checkerboard[q.posx][q.posy - 1]);
 							v[q.posx][q.posy - 1] = 1;
 						}
-							
+
 					}
 					if (q.posy < 18)
 					{
 						if (checkerboard[q.posx][q.posy + 1].data == sign && v[q.posx][q.posy + 1] == 0)
 						{
 							EnQueue(s, checkerboard[q.posx][q.posy + 1]);
-							v[q.posx][q.posy + 1]=1;
+							v[q.posx][q.posy + 1] = 1;
 						}
-							
+
 					}
 					if (q.posx > 0)
 					{
@@ -144,7 +155,7 @@ int JudgeDragon(piece checkerboard[][19],int sign,SqQueue s)
 						{
 							EnQueue(s, checkerboard[q.posx + 1][q.posy]);
 							v[q.posx + 1][q.posy] = 1;
-						}	
+						}
 					}
 				}
 				++m;
@@ -157,7 +168,7 @@ int JudgeDragon(piece checkerboard[][19],int sign,SqQueue s)
 void randomborder(piece checkerboard[19][19])
 {
 	srand((unsigned)time(NULL));
-	for(int i=0;i<19;i++)
+	for (int i = 0; i < 19; i++)
 		for (int j = 0; j < 19; j++)
 		{
 			int aa = rand() % 3;
@@ -177,14 +188,14 @@ int Judgecount(int sign)
 	return count;
 }
 
-void DisPlayCount(int count,int sign)
+void DisPlayCount(int count, int sign)
 {
 	for (int i = 0; i < count; i++)
 	{
 		if (sign == 1)
-			cout << "µ⁄" << i + 1 << "∏ˆ∞◊…´¥Û¡˙”–" << num[sign][i] << "∏ˆ∆Â◊”"<<endl;
+			cout << "Á¨¨" << i + 1 << "‰∏™ÁôΩËâ≤Â§ßÈæôÊúâ" << num[sign][i] << "‰∏™Ê£ãÂ≠ê" << endl;
 		if (sign == 0)
-			cout << "µ⁄" << i + 1 << "∏ˆ∫⁄…´¥Û¡˙”–" << num[sign][i] << "∏ˆ∆Â◊”"<<endl;
+			cout << "Á¨¨" << i + 1 << "‰∏™ÈªëËâ≤Â§ßÈæôÊúâ" << num[sign][i] << "‰∏™Ê£ãÂ≠ê" << endl;
 	}
 }
 
@@ -200,10 +211,9 @@ int main() {
 	JudgeDragon(p, 1, s);
 	Bcount = Judgecount(0);
 	Wcount = Judgecount(1);
-	cout << "∫⁄…´¥Û¡˙”–" << Bcount << "∏ˆ"<<endl;
+	cout << "ÈªëËâ≤Â§ßÈæôÊúâ" << Bcount << "‰∏™" << endl;
 	DisPlayCount(Bcount, 0);
-	cout << endl << endl << endl << endl;
-	cout << "∞◊…´¥Û¡˙”–" << Wcount << "∏ˆ"<<endl;
+	cout << "ÁôΩËâ≤Â§ßÈæôÊúâ" << Wcount << "‰∏™" << endl;
 	DisPlayCount(Wcount, 1);
 
 }
