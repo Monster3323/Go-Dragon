@@ -91,17 +91,6 @@ void Display(piece checkerboard[19][19])
 	{
 		for (j = 0; j < 19; j++)
 		{
-			if (checkerboard[i][j].data == 2) cout<<"©°©¤";
-			if (checkerboard[i][j].data == 3) cout<<"©´";
-			if (checkerboard[i][j].data == 4) cout<<"©¸©¤";
-			if (checkerboard[i][j].data == 5) cout<<"©¼";
-			if (checkerboard[i][j].data == 6) cout<<"©Ð©¤";
-			if (checkerboard[i][j].data == 7) cout<<"©Ø©¤";
-			if (checkerboard[i][j].data == 8) cout<<"©À©¤";
-			if (checkerboard[i][j].data == 9) cout<<"©È";
-			if (checkerboard[i][j].data == 10) cout<<"©à©¤";
-			if (checkerboard[i][j].data == 0) cout<<"¡ð";
-			if (checkerboard[i][j].data == 1) cout<<"¡ñ";
 		}
 		printf("\n");
 	}
